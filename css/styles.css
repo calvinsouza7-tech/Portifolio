@@ -515,6 +515,8 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    padding: 0 30px;
 }
 
 .logo {
@@ -597,8 +599,11 @@ img {
     text-decoration: none;
     font-weight: 600;
     transition: all var(--transition-base);
-    position: relative;
-    overflow: hidden;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
 }
 
 .nav-cta::before {
@@ -781,8 +786,8 @@ img {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 400px;
-    height: 400px;
+    width: 380px;
+    height: 380px;
 }
 
 .floating-card {
@@ -791,27 +796,28 @@ img {
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 25px;
+    padding: 20px;
     animation: floatCard 6s ease-in-out infinite;
-    width: 220px;
+    width: 170px;
 }
 
+/* Triangular positioning */
 .floating-card:nth-child(1) {
-    top: 30px;
-    left: -20px;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     animation-delay: 0s;
 }
 
 .floating-card:nth-child(2) {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 20px;
+    left: 0;
     animation-delay: -2s;
 }
 
 .floating-card:nth-child(3) {
     bottom: 20px;
-    left: 20px;
+    right: 0;
     animation-delay: -4s;
 }
 
