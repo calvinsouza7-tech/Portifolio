@@ -594,8 +594,8 @@ img {
 .nav-cta {
     background: var(--gradient);
     color: var(--white);
-    padding: 12px 28px;
-    border-radius: 30px;
+    padding: 10px 20px;
+    border-radius: 25px;
     text-decoration: none;
     font-weight: 600;
     transition: all var(--transition-base);
@@ -604,6 +604,8 @@ img {
     top: 50%;
     transform: translateY(-50%);
     z-index: 100;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
 .nav-cta::before {
@@ -783,11 +785,11 @@ img {
 /* Floating Visual */
 .hero-visual {
     position: absolute;
-    right: 0;
+    right: -20px;
     top: 50%;
     transform: translateY(-50%);
-    width: 380px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
 }
 
 .floating-card {
@@ -798,28 +800,26 @@ img {
     border-radius: 20px;
     padding: 20px;
     animation: floatCard 6s ease-in-out infinite;
-    width: 170px;
-    height: 120px;
+    width: 160px;
 }
 
-/* Triangular independent positioning */
+/* Triangular positioning - well spaced */
 .floating-card:nth-child(1) {
-    top: 20%;
-    right: 0;
-    left: auto;
-    transform: none;
+    top: 0;
+    left: 20px;
     animation-delay: 0s;
 }
 
 .floating-card:nth-child(2) {
     top: 50%;
     left: 0;
+    transform: translateY(-50%);
     animation-delay: -2s;
 }
 
 .floating-card:nth-child(3) {
-    top: 50%;
-    right: 0;
+    bottom: 0;
+    left: 40px;
     animation-delay: -4s;
 }
 
