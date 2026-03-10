@@ -7,702 +7,528 @@
     <title>Eletricista Profissional - Serviços Elétricos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <style>
         :root {
             --primary: #FFB800;
-            --primary-dark: #E5A600;
+            --primary-dark: #FF9500;
             --secondary: #1A1A2E;
-            --text: #333333;
-            --text-light: #666666;
+            --accent: #FF6B00;
             --white: #FFFFFF;
-            --bg-light: #F5F5F5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --gray: #1A1A2E;
+            --gradient: linear-gradient(135deg, #FFB800 0%, #FF9500 50%, #FF6B00 100%);
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--white);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            font-family: 'Outfit', sans-serif;
+            background: var(--secondary);
+            color: var(--white);
         }
 
         /* Header */
         header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 184, 0, 0.2);
         }
 
-        nav {
+        header nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
+            position: relative;
+            padding: 0 30px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
+            gap: 12px;
+            font-size: 1.6rem;
             font-weight: 700;
-            color: var(--secondary);
+            color: var(--white);
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background: var(--gradient);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1.4rem;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
-            gap: 30px;
-            list-style: none;
+            align-items: center;
+            justify-content: center;
+            gap: 35px;
+            flex: 1;
         }
 
-        .nav-links a {
-            color: var(--text);
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
-        .nav-links a:hover {
+        .nav-menu a:hover {
             color: var(--primary);
         }
 
         .btn-cta {
-            background: var(--primary);
+            background: var(--gradient);
             color: var(--secondary);
-            padding: 12px 25px;
-            border-radius: 25px;
+            padding: 12px 28px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .btn-cta:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
+            transform: translateY(-50%) translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 184, 0, 0.4);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            padding: 150px 0 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
             background:
-                linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 100%),
-                url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1920&q=80');
+                linear-gradient(135deg, rgba(255, 184, 0, 0.1) 0%, rgba(26, 26, 46, 1) 50%),
+                url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1200&q=80');
             background-size: cover;
             background-position: center;
-            color: var(--white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 26, 46, 0.85);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+            max-width: 700px;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            line-height: 1.2;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
             margin-bottom: 20px;
         }
 
         .hero h1 span {
-            color: var(--primary);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
             font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 30px;
-            opacity: 0.9;
+            max-width: 500px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
 
-        .btn-white {
-            background: var(--white);
+        .btn-primary {
+            background: var(--gradient);
             color: var(--secondary);
-            padding: 15px 30px;
+            padding: 16px 35px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-white:hover {
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(255, 184, 0, 0.4);
         }
 
-        .btn-outline {
-            border: 2px solid var(--white);
+        .btn-secondary {
+            background: transparent;
             color: var(--white);
-            padding: 13px 28px;
+            padding: 14px 33px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s;
         }
 
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--secondary);
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
         }
 
-        .hero-image {
-            background: var(--primary);
-            border-radius: 20px;
-            padding: 40px;
+        /* Services */
+        .services {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .section-header {
             text-align: center;
-        }
-
-        .hero-image .icon {
-            font-size: 8rem;
-        }
-
-        /* Features */
-        .features {
-            padding: 80px 0;
-            background: var(--bg-light);
+            max-width: 600px;
+            margin: 0 auto 50px;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 15px;
         }
 
-        .section-title p {
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
+        .section-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
         }
 
-        .features-grid {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .feature-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-        }
-
-        .feature-card p {
-            color: var(--text-light);
-        }
-
-        /* Services */
-        .services {
-            padding: 80px 0;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
         .service-card {
-            padding: 25px;
-            border: 2px solid var(--bg-light);
-            border-radius: 15px;
-            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s;
         }
 
         .service-card:hover {
-            border-color: var(--primary);
-            background: var(--bg-light);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 184, 0, 0.3);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 184, 0, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
         }
 
         .service-card h3 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
         }
 
         .service-card p {
-            color: var(--text-light);
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
         }
 
-        /* Why Choose */
-        .why-choose {
-            padding: 80px 0;
-            background: var(--secondary);
-            color: var(--white);
+        /* About */
+        .about {
+            padding: 100px 0;
         }
 
-        .why-choose .section-title h2,
-        .why-choose .section-title p {
-            color: var(--white);
-        }
-
-        .why-choose-grid {
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            text-align: center;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .why-item {
-            padding: 20px;
+        .about-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
         }
 
-        .why-item .number {
-            font-size: 3rem;
-            font-weight: 700;
+        .about-content h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content>p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .about-list {
+            list-style: none;
+        }
+
+        .about-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .about-list li i {
             color: var(--primary);
+            font-size: 1.2rem;
         }
 
-        .why-item p {
-            opacity: 0.9;
+        .about-image {
+            background:
+                linear-gradient(135deg, rgba(255, 184, 0, 0.2) 0%, rgba(255, 107, 0, 0.2) 100%),
+                url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            height: 450px;
+            position: relative;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(255, 184, 0, 0.3);
+            border-radius: 30px;
+            margin: 15px;
         }
 
         /* Contact */
         .contact {
-            padding: 80px 0;
-            background: var(--bg-light);
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
 
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .contact-info h3 {
-            font-size: 1.5rem;
+        .contact h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .contact-item .icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .contact-form {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .btn-submit {
-            background: var(--primary);
-            color: var(--secondary);
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s;
-        }
-
-        .btn-submit:hover {
-            background: var(--primary-dark);
+        .contact p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            margin-bottom: 35px;
         }
 
         /* Footer */
         footer {
-            background: var(--secondary);
-            color: var(--white);
-            padding: 50px 0 20px;
+            padding: 60px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
             margin-bottom: 30px;
         }
 
-        .footer-brand p {
-            margin-top: 15px;
-            opacity: 0.8;
-        }
-
-        .footer-links h4 {
-            margin-bottom: 20px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            opacity: 0.8;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
         }
 
         .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
+        @media (max-width: 992px) {
+            .nav-menu {
                 display: none;
             }
 
-            .hero-content {
+            .btn-cta {
+                position: static;
+                transform: none;
+                margin-left: auto;
+            }
+
+            .about-grid {
                 grid-template-columns: 1fr;
-                text-align: center;
             }
 
-            .hero-buttons {
-                justify-content: center;
-                flex-wrap: wrap;
+            .hero h1 {
+                font-size: 2.5rem;
             }
+        }
 
+        @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
 
-            .why-choose-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .hero-buttons {
+                flex-direction: column;
             }
 
-            .contact-wrapper {
+            .services-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <div class="logo-icon"><i class="fas fa-bolt"></i></div>
-                    EletricPro
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-                <a href="#contato" class="btn-cta">Solicitar Orçamento</a>
-            </nav>
-        </div>
+        <nav class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                <span>EletricPro</span>
+            </a>
+            <div class="nav-menu">
+                <a href="#inicio">Início</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <a href="#contato" class="btn-cta">Solicitar Orçamento</a>
+        </nav>
     </header>
 
+    <!-- Hero -->
     <section class="hero" id="inicio">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Serviços Elétricos <span>Profissionais</span> para sua Casa ou Empresa</h1>
-                    <p>Electricistas especializados com anos de experiência. Segurança, qualidade e preço justo para
-                        todos os tipos de serviço elétrico.</p>
-                    <div class="hero-buttons">
-                        <a href="#contato" class="btn-white">Solicitar Orçamento</a>
-                        <a href="#servicos" class="btn-outline">Ver Serviços</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="icon"><i class="fas fa-bolt"></i></div>
+                <h1>Serviços Elétricos <span>Profissionais</span></h1>
+                <p>Soluções completas em elétrica residencial e comercial. Segurança, qualidade e atendimento
+                    personalizado para seu projeto.</p>
+                <div class="hero-buttons">
+                    <a href="#contato" class="btn-primary"><i class="fas fa-phone-alt"></i> Solicitar Orçamento</a>
+                    <a href="#servicos" class="btn-secondary">Ver Serviços</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="features" id="sobre">
-        <div class="container">
-            <div class="section-title">
-                <h2>Por Que Escolher Nossa Empresa?</h2>
-                <p>Oferecemos soluções eléctricas completas com segurança e qualidade</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Profissionais Certificados</h3>
-                    <p>Equipe qualificada com certificação e anos de experiência no mercado.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⏱️</div>
-                    <h3>Atendimento Rápido</h3>
-                    <p>Servicio ágil e eficiente, com prazos cumpridos e qualidade garantida.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-coins"></i></div>
-                    <h3>Preço Justo</h3>
-                    <p>Orçamentos transparentes sem custos ocultos. Melhor custo-benefício.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Services -->
     <section class="services" id="servicos">
         <div class="container">
-            <div class="section-title">
-                <h2>Nossos Serviços</h2>
-                <p>Soluções completas para suas necessidades elétricas</p>
+            <div class="section-header">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <p class="section-subtitle">Especialidades para atender todas as suas necessidades</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>🔌 Instalação Elétrica</h3>
-                    <p>Instalações residenciais e comerciais completas,新規接线 e reformas.</p>
+                    <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Instalações Elétricas</h3>
+                    <p>Instalações completas para residenciais e comerciais com total segurança e conformidade com as
+                        normas técnicas.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Reparos Elétricos</h3>
-                    <p>Conserto de tomadas, interruptores, disjuntores e qualquer problema elétrico.</p>
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Manutenção</h3>
+                    <p>Serviços de manutenção preventiva e corretiva para garantir o funcionamento adequado da sua rede
+                        elétrica.</p>
                 </div>
                 <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
                     <h3>Iluminação</h3>
-                    <p>Projeto e instalação de sistemas de iluminação LED, spots e lustres.</p>
+                    <p>Projetos de iluminação residencial e comercial, incluindo LED e sistemas inteligentes.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Padrão de Energia</h3>
-                    <p>Entradas de energia, ligação à rede e regularização junto à concessionária.</p>
+                    <div class="service-icon"><i class="fas fa-plug"></i></div>
+                    <h3>Quadros Elétricos</h3>
+                    <p>Instalação e upgrade de quadros de distribuição, disjuntores e sistemas de proteção.</p>
                 </div>
                 <div class="service-card">
-                    <h3>🔒 Segurança</h3>
-                    <p>Instalação de protetores de surto, DPS, aterramento e sistemas de segurança.</p>
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <h3>Residencial</h3>
+                    <p>Atendimento especializado para residências, desde pequenas reformas até projetos completos.</p>
                 </div>
                 <div class="service-card">
-                    <h3>🛠️ Manutenção</h3>
-                    <p>Manutenção preventiva e corretiva para empresas e residências.</p>
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                    <h3>Comercial</h3>
+                    <p>Soluções elétricas para empresas, lojas e escritórios com foco em eficiência e segurança.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="why-choose">
+    <!-- About -->
+    <section class="about" id="sobre">
         <div class="container">
-            <div class="section-title">
-                <h2>Números que Falam</h2>
-                <p>Confiança e qualidade comprovadas</p>
-            </div>
-            <div class="why-choose-grid">
-                <div class="why-item">
-                    <div class="number">500+</div>
-                    <p>Projetos Realizados</p>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Por Que Escolher <span>Nossos Serviços?</span></h2>
+                    <p>Com anos de experiência no mercado, oferecemos serviços elétricos de alta qualidade com segurança
+                        e profissionalismo. Nossa equipe é altamente qualificada e equipada para atender desde pequenas
+                        reparaciones até projetos complexos.</p>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check-circle"></i> Profissionais certificados</li>
+                        <li><i class="fas fa-check-circle"></i> Garantia nos serviços</li>
+                        <li><i class="fas fa-check-circle"></i> Orçamento sem compromisso</li>
+                        <li><i class="fas fa-check-circle"></i> Atendimento rápido</li>
+                        <li><i class="fas fa-check-circle"></i> Preços justos</li>
+                    </ul>
                 </div>
-                <div class="why-item">
-                    <div class="number">10+</div>
-                    <p>Anos de Experiência</p>
-                </div>
-                <div class="why-item">
-                    <div class="number">100%</div>
-                    <p>Clientes Satisfeitos</p>
-                </div>
-                <div class="why-item">
-                    <div class="number">24h</div>
-                    <p>Atendimento de Emergência</p>
-                </div>
+                <div class="about-image"></div>
             </div>
         </div>
     </section>
 
+    <!-- Contact -->
     <section class="contact" id="contato">
         <div class="container">
-            <div class="section-title">
-                <h2>Fale Conosco</h2>
-                <p>Estamos prontos para atendê-lo</p>
-            </div>
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h3>Entre em Contato</h3>
-                    <div class="contact-item">
-                        <div class="icon"><i class="fas fa-phone"></i></div>
-                        <span>(11) 99999-9999</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="icon">📧</div>
-                        <span>contato@eletricpro.com.br</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="icon">📍</div>
-                        <span>São Paulo, SP</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="icon"><i class="fas fa-clock"></i></div>
-                        <span>Seg - Sáb: 8h - 18h</span>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label>Nome</label>
-                        <input type="text" placeholder="Seu nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Telefone</label>
-                        <input type="tel" placeholder="(11) 99999-9999" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Tipo de Serviço</label>
-                        <select>
-                            <option>Selecione...</option>
-                            <option>Instalação Elétrica</option>
-                            <option>Reparo</option>
-                            <option>Iluminação</option>
-                            <option>Outro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Mensagem</label>
-                        <textarea rows="4" placeholder="Descreva seu problema ou serviço necessário"></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Enviar Mensagem</button>
-                </form>
-            </div>
+            <h2>Pronto para Resolver Seu Problema Elétrico?</h2>
+            <p>Entre em contato conosco e solicite um orçamento sem compromisso.</p>
+            <a href="https://wa.me/5511999999999" class="btn-primary" target="_blank"><i class="fab fa-whatsapp"></i>
+                Falar no WhatsApp</a>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <div class="logo-icon">⚡</div>
-                        EletricPro
-                    </a>
-                    <p>Serviços elétricos profissionais com segurança e qualidade. Sua satisfação é nossa prioridade.
-                    </p>
-                </div>
-                <div class="footer-links">
-                    <h4>Links Rápidos</h4>
-                    <ul>
-                        <li><a href="#inicio">Início</a></li>
-                        <li><a href="#servicos">Serviços</a></li>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#">Instalação</a></li>
-                        <li><a href="#">Reparos</a></li>
-                        <li><a href="#">Manutenção</a></li>
-                        <li><a href="#">Emergências</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 EletricPro. Todos os direitos reservados.</p>
+                <p>&copy; 2024 EletricPro. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <script src="../js/language.js"></script>
 </body>
 
 </html>

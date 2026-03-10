@@ -804,8 +804,8 @@ img {
 
 /* Triangular independent positioning */
 .floating-card:nth-child(1) {
-    top: 0;
-    left: 50%;
+    top: 20%;
+    left: 85%;
     transform: translateX(-50%);
     animation-delay: 0s;
 }
