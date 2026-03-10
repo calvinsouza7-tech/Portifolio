@@ -787,7 +787,7 @@ img {
     top: 50%;
     transform: translateY(-50%);
     width: 380px;
-    height: 380px;
+    height: 400px;
 }
 
 .floating-card {
@@ -799,25 +799,26 @@ img {
     padding: 20px;
     animation: floatCard 6s ease-in-out infinite;
     width: 170px;
+    height: 120px;
 }
 
-/* Triangular positioning */
+/* Triangular independent positioning */
 .floating-card:nth-child(1) {
-    top: 10px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     animation-delay: 0s;
 }
 
 .floating-card:nth-child(2) {
-    bottom: 20px;
-    left: 0;
+    top: 140px;
+    left: 20px;
     animation-delay: -2s;
 }
 
 .floating-card:nth-child(3) {
-    bottom: 20px;
-    right: 0;
+    top: 140px;
+    right: 20px;
     animation-delay: -4s;
 }
 
