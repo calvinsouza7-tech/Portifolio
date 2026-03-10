@@ -29,7 +29,6 @@
             color: var(--white);
         }
 
-        /* Header */
         header {
             background: rgba(26, 26, 46, 0.95);
             backdrop-filter: blur(20px);
@@ -108,7 +107,6 @@
             box-shadow: 0 10px 30px rgba(0, 212, 170, 0.4);
         }
 
-        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -198,9 +196,15 @@
             color: var(--primary);
         }
 
-        /* Services */
-        .services {
+        .services,
+        .benefits,
+        .about,
+        .contact {
             padding: 100px 0;
+        }
+
+        .services,
+        .benefits {
             background: rgba(0, 0, 0, 0.3);
         }
 
@@ -265,9 +269,47 @@
             font-size: 0.95rem;
         }
 
-        /* About */
-        .about {
-            padding: 100px 0;
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 212, 170, 0.2);
+        }
+
+        .benefit-icon {
+            width: 65px;
+            height: 65px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
         }
 
         .about-grid {
@@ -315,8 +357,8 @@
 
         .about-image {
             background:
-                linear-gradient(135deg, rgba(0, 212, 170, 0.2) 0%, rgba(0, 174, 239, 0.2) 100%),
-                url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80');
+                linear-gradient(135deg, rgba(0, 212, 170, 0.2) 0%, rgba(0, 174, 239, 0.%),
+                    url2) 100('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80');
             background-size: cover;
             background-position: center;
             border-radius: 30px;
@@ -333,58 +375,7 @@
             margin: 15px;
         }
 
-        /* Benefits */
-        .benefits {
-            padding: 100px 0;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-
-        .benefit-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(0, 212, 170, 0.2);
-        }
-
-        .benefit-icon {
-            width: 65px;
-            height: 65px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin: 0 auto 20px;
-        }
-
-        .benefit-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .benefit-card p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Contact */
         .contact {
-            padding: 100px 0;
             text-align: center;
         }
 
@@ -400,7 +391,6 @@
             margin-bottom: 35px;
         }
 
-        /* Footer */
         footer {
             padding: 60px 0 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -412,7 +402,6 @@
             font-size: 0.95rem;
         }
 
-        /* Responsive */
         @media (max-width: 992px) {
             .nav-menu {
                 display: none;
@@ -446,10 +435,7 @@
                 flex-direction: column;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
+            .services-grid,
             .benefits-grid {
                 grid-template-columns: 1fr;
             }
@@ -458,7 +444,6 @@
 </head>
 
 <body>
-    <!-- Header -->
     <header>
         <nav class="container">
             <a href="#" class="logo">
@@ -471,140 +456,134 @@
                 <a href="#beneficios">Benefícios</a>
                 <a href="#contato">Contato</a>
             </div>
-            <a href="#contato" class="btn-cta">Solicitar Orçamento</a>
-        </nav>
+            <a href="#contato-cta">Solicitar Orçamento</a>
+            </nav" class="btn>
     </header>
 
-    <!-- Hero -->
-    <section class="hero" id="inicio">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Energia Solar <span>para Todos</span></h1>
-                <p>Transforme sua conta de luz em investimento. Sistemas fotovoltaicos residenciais e comerciais com
-                    economia de até 95%.</p>
-                <div class="hero-buttons">
-                    <a href="#contato" class="btn-primary"><i class="fas fa-sun"></i> Solicitar Orçamento</a>
-                    <a href="#beneficios" class="btn-secondary">Ver Benefícios</a>
+    <section class=" hero" id="inicio">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Energia Solar <span>para Todos</span></h1>
+                    <p>Transforme sua conta de luz em investimento. Sistemas fotovoltaicos residenciais e comerciais com
+                        economia de até 95%.</p>
+                    <div class="hero-buttons">
+                        <a href="#contato" class="btn-primary"><i class="fas fa-sun"></i> Solicitar Orçamento</a>
+                        <a href="#beneficios" class="btn-secondary">Ver Benefícios</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Services -->
-    <section class="services" id="servicos">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nossas Soluções</h2>
-                <p class="section-subtitle">Sistemas completos para gerar sua própria energia</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-home"></i></div>
-                    <h3>Residencial</h3>
-                    <p>Sistemas fotovoltaicos para casas e apartamentos. Economia direta na conta de luz.</p>
+            <section class="services" id="servicos">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Nossas Soluções</h2>
+                        <p class="section-subtitle">Sistemas completos para gerar sua própria energia</p>
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-home"></i></div>
+                            <h3>Residencial</h3>
+                            <p>Sistemas fotovoltaicos para casas e apartamentos. Economia direta na conta de luz.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-building"></i></div>
+                            <h3>Comercial</h3>
+                            <p>Soluções para empresas, indústrias e comércios. Redução significativa de custos.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-industry"></i></div>
+                            <h3>Industrial</h3>
+                            <p>Sistemas de grande porte para indústrias. Geração própria de energia em escala.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-tools"></i></div>
+                            <h3>Manutenção</h3>
+                            <p>Serviços de manutenção e monitoramento para seu sistema solar.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-battery-full"></i></div>
+                            <h3>Baterias</h3>
+                            <p>Sistemas de armazenamento com batteries para maior autonomia energética.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-charging-station"></i></div>
+                            <h3>Carregadores EV</h3>
+                            <p>Instação de carregadores para veículos elétricos integrados ao sistema solar.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-building"></i></div>
-                    <h3>Comercial</h3>
-                    <p>Soluções para empresas, indústrias e comércios. Redução significativa de custos.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-industry"></i></div>
-                    <h3>Industrial</h3>
-                    <p>Sistemas de grande porte para indústrias. Geração própria de energia em escala.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-tools"></i></div>
-                    <h3>Manutenção</h3>
-                    <p>Serviços de manutenção e monitoramento para seu sistema solar.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-battery-full"></i></div>
-                    <h3>Baterias</h3>
-                    <p>Sistemas de armazenamento com batteries para maior autonomia energética.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-charging-station"></i></div>
-                    <h3>Carregadores EV</h3>
-                    <p>Instação de carregadores para veículos elétricos integrados ao sistema solar.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Benefits -->
-    <section class="benefits" id="beneficios">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Por Que Investir em Energia Solar?</h2>
-                <p class="section-subtitle">Vantagens que fazem diferença no seu bolso</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon"><i class="fas fa-piggy-bank"></i></div>
-                    <h4>Economia</h4>
-                    <p>Reduza até 95% da conta de luz</p>
+            <section class="benefits" id="beneficios">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Por Que Investir em Energia Solar?</h2>
+                        <p class="section-subtitle">Vantagens que fazem diferença no seu bolso</p>
+                    </div>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-piggy-bank"></i></div>
+                            <h4>Economia</h4>
+                            <p>Reduza até 95% da conta de luz</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+                            <h4>Sustentável</h4>
+                            <p>Energia limpa e renovável</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h4>Garantia</h4>
+                            <p>25 anos de garantia nos painéis</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                            <h4>Valorização</h4>
+                            <p>Aumente o valor do imóvel</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
-                    <h4>Sustentável</h4>
-                    <p>Energia limpa e renovável</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h4>Garantia</h4>
-                    <p>25 anos de garantia nos painéis</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
-                    <h4>Valorização</h4>
-                    <p>Aumente o valor do imóvel</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- About -->
-    <section class="about" id="sobre">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <h2>Sobre a <span>SolarTech</span></h2>
-                    <p>Somos especialistas em energia solar fotovoltaica, com anos de experiência no mercado. Nossa
-                        missão é democratizar o acesso à energia limpa e renovável, oferecendo soluções personalizadas
-                        para cada cliente.</p>
-                    <ul class="about-list">
-                        <li><i class="fas fa-check-circle"></i> Técnicos certificados</li>
-                        <li><i class="fas fa-check-circle"></i> Equipamentos de primeira linha</li>
-                        <li><i class="fas fa-check-circle"></i> Financiamento facilitado</li>
-                        <li><i class="fas fa-check-circle"></i> Suporte pós-installação</li>
-                    </ul>
+            <section class="about" id="sobre">
+                <div class="container">
+                    <div class="about-grid">
+                        <div class="about-content">
+                            <h2>Sobre a <span>SolarTech</span></h2>
+                            <p>Somos especialistas em energia solar fotovoltaica, com anos de experiência no mercado.
+                                Nossa missão é democratizar o acesso à energia limpa e renovável, oferecendo soluções
+                                personalizadas para cada cliente.</p>
+                            <ul class="about-list">
+                                <li><i class="fas fa-check-circle"></i> Técnicos certificados</li>
+                                <li><i class="fas fa-check-circle"></i> Equipamentos de primeira linha</li>
+                                <li><i class="fas fa-check-circle"></i> Financiamento facilitado</li>
+                                <li><i class="fas fa-check-circle"></i> Suporte pós-installação</li>
+                            </ul>
+                        </div>
+                        <div class="about-image"></div>
+                    </div>
                 </div>
-                <div class="about-image"></div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Contact -->
-    <section class="contact" id="contato">
-        <div class="container">
-            <h2>Pronto para Economizar com Energia Solar?</h2>
-            <p>Solicite um orçamento gratuito e descubra quanto você pode economizar.</p>
-            <a href="https://wa.me/5511999999999" class="btn-primary" target="_blank"><i class="fab fa-whatsapp"></i>
-                Falar no WhatsApp</a>
-        </div>
-    </section>
+            <section class="contact" id="contato">
+                <div class="container">
+                    <h2>Pronto para Economizar?</h2>
+                    <p>Solicite um orçamento gratuito e descubra quanto você pode economizar.</p>
+                    <a href="https://wa.me/5511999999999" class="btn-primary" target="_blank"><i
+                            class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
+                </div>
+            </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2024 SolarTech. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+            <footer>
+                <div class="container">
+                    <div class="footer-content">
+                        <p>&copy; 2024 SolarTech. Todos os direitos reservados.</p>
+                    </div>
+                </div>
+            </footer>
 
-    <script src="../js/language.js"></script>
+            <script src="../js/language.js"></script>
 </body>
 
 </html>

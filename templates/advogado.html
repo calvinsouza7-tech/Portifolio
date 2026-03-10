@@ -4,261 +4,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advogado - Escritório de Advocacia</title>
+    <title>Advogado Profissional - Serviços Jurídicos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <style>
         :root {
             --primary: #1A365D;
-            --primary-light: #2C5282;
-            --secondary: #2D3748;
-            --accent: #C9A227;
+            --primary-dark: #2C5282;
+            --secondary: #1A1A2E;
+            --accent: #C53030;
             --white: #FFFFFF;
-            --bg: #F7FAFC;
-            --text: #2D3748;
-            --text-light: #718096;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --gray: #1A1A2E;
+            --gradient: linear-gradient(135deg, #1A365D 0%, #2C5282 50%, #4299E1 100%);
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            color: var(--text);
-            background: var(--white);
+            font-family: 'Outfit', sans-serif;
+            background: var(--secondary);
+            color: var(--white);
         }
 
-        h1,
-        h2,
-        h3 {
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
         header {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(26, 54, 93, 0.4);
         }
 
-        nav {
+        header nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
+            position: relative;
+            padding: 0 30px;
         }
 
         .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
         }
 
         .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--primary);
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background: var(--gradient);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.25rem;
+            font-size: 1.4rem;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 35px;
-            list-style: none;
+            flex: 1;
         }
 
-        .nav-links a {
-            color: var(--text);
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
+        .nav-menu a:hover {
+            color: #90CDF4;
         }
 
         .btn-cta {
-            background: var(--primary);
+            background: var(--gradient);
             color: var(--white);
             padding: 12px 28px;
-            border-radius: 5px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .btn-cta:hover {
-            background: var(--primary-light);
+            transform: translateY(-50%) translateY(-3px);
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.5);
         }
 
-        /* Hero */
         .hero {
-            padding: 180px 0 120px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
             background:
-                linear-gradient(135deg, rgba(26, 54, 93, 0.97) 0%, rgba(44, 82, 130, 0.97) 100%),
-                url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80');
+                linear-gradient(135deg, rgba(26, 54, 93, 0.2) 0%, rgba(26, 26, 46, 1) 50%),
+                url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80');
             background-size: cover;
             background-position: center;
-            color: var(--white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 26, 46, 0.9);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            align-items: center;
+            max-width: 700px;
         }
 
         .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 3.5rem;
-            line-height: 1.15;
-            margin-bottom: 25px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
         }
 
         .hero h1 span {
-            color: var(--accent);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
-            font-size: 1.15rem;
-            margin-bottom: 35px;
-            opacity: 0.9;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
             max-width: 500px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
 
-        .btn-white {
-            background: var(--white);
-            color: var(--primary);
-            padding: 15px 32px;
-            border-radius: 5px;
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 16px 35px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(26, 54, 93, 0.5);
         }
 
-        .btn-outline {
+        .btn-secondary {
             background: transparent;
             color: var(--white);
-            padding: 13px 30px;
-            border-radius: 5px;
+            padding: 14px 33px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            border: 2px solid var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s;
         }
 
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--primary);
+        .btn-secondary:hover {
+            border-color: #90CDF4;
+            color: #90CDF4;
         }
 
-        .hero-card {
-            background: var(--white);
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        .services,
+        .areas,
+        .contact {
+            padding: 100px 0;
         }
 
-        .hero-card h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--accent);
+        .services {
+            background: rgba(0, 0, 0, 0.3);
         }
 
-        .hero-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 15px;
         }
 
-        /* About */
-        .about {
-            padding: 120px 0;
+        .section-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
         }
 
-        .about-content {
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(144, 205, 244, 0.3);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(26, 54, 93, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #90CDF4;
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .area-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .area-item:hover {
+            background: rgba(26, 54, 93, 0.2);
+            border-color: rgba(144, 205, 244, 0.3);
+        }
+
+        .area-item i {
+            font-size: 2rem;
+            color: #90CDF4;
+            margin-bottom: 15px;
+        }
+
+        .area-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .area-item p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .about {
+            padding: 100px 0;
+        }
+
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 60px;
             align-items: center;
         }
 
-        .about-image {
-            background:
-                linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%),
-                url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80');
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            height: 550px;
-            position: relative;
+        .about-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
         }
 
-        .about-image::after {
-            content: '';
-            position: absolute;
-            right: -20px;
-            bottom: -20px;
-            width: 150px;
-            height: 150px;
-            background: var(--accent);
-            border-radius: 10px;
-            z-index: -1;
+        .about-content h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .about h2 {
-            font-size: 2.75rem;
-            margin-bottom: 25px;
-            color: var(--primary);
-        }
-
-        .about>.container>p {
-            color: var(--text-light);
-            margin-bottom: 40px;
-            max-width: 600px;
+        .about-content>p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
         }
 
         .about-list {
-            margin-top: 30px;
+            list-style: none;
         }
 
         .about-list li {
@@ -266,311 +342,97 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 18px;
-            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.85);
         }
 
-        .about-list li span {
-            width: 28px;
-            height: 28px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.85rem;
+        .about-list li i {
+            color: #90CDF4;
+            font-size: 1.2rem;
         }
 
-        /* Areas */
-        .areas {
-            padding: 120px 0;
-            background: var(--bg);
+        .about-image {
+            background:
+                linear-gradient(135deg, rgba(26, 54, 93, 0.3) 0%, rgba(66, 153, 225, 0.3) 100%),
+                url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            height: 450px;
+            position: relative;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(144, 205, 244, 0.3);
+            border-radius: 30px;
+            margin: 15px;
         }
 
-        .section-header h2 {
-            font-size: 2.75rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .section-header p {
-            color: var(--text-light);
-            max-width: 550px;
-            margin: 0 auto;
-        }
-
-        .areas-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .area-card {
-            background: var(--white);
-            padding: 35px;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s;
-        }
-
-        .area-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .area-icon {
-            width: 55px;
-            height: 55px;
-            background: var(--bg);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        .area-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-
-        .area-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Stats */
-        .stats {
-            padding: 100px 0;
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            text-align: center;
-        }
-
-        .stat-item .number {
-            font-size: 3.5rem;
-            font-weight: 700;
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--accent);
-        }
-
-        .stat-item p {
-            opacity: 0.9;
-            font-size: 1.05rem;
-        }
-
-        /* Contact */
         .contact {
-            padding: 120px 0;
-            background: var(--bg);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
         }
 
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 50px;
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-        }
-
-        .contact-info {
-            background: var(--primary);
-            padding: 50px;
-            color: var(--white);
-        }
-
-        .contact-info h3 {
-            font-size: 2rem;
+        .contact h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .contact-info p {
-            opacity: 0.9;
-            margin-bottom: 30px;
+        .contact p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            margin-bottom: 35px;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .contact-item span {
-            font-size: 1.25rem;
-        }
-
-        .contact-form {
-            padding: 50px;
-        }
-
-        .form-group {
-            margin-bottom: 22px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #E2E8F0;
-            border-radius: 5px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .btn-submit {
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: 16px 35px;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s;
-        }
-
-        .btn-submit:hover {
-            background: var(--primary-light);
-        }
-
-        /* Footer */
         footer {
-            background: var(--secondary);
-            color: var(--white);
             padding: 60px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 40px;
-        }
-
-        .footer-brand .logo {
-            color: var(--white);
-            margin-bottom: 15px;
-        }
-
-        .footer-brand p {
-            opacity: 0.8;
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.95rem;
         }
 
-        .footer-links h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            opacity: 0.8;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
         @media (max-width: 992px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero p {
-                margin: 0 auto 35px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-card {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .areas-grid,
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
+            .nav-menu {
                 display: none;
+            }
+
+            .btn-cta {
+                position: static;
+                transform: none;
+                margin-left: auto;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .areas-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
             }
+        }
 
-            .areas-grid,
-            .stats-grid {
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .services-grid,
+            .areas-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -579,41 +441,96 @@
 
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <div class="logo-icon"><i class="fas fa-balance-scale"></i></div>
-                    Silva & Associates
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#areas">Áreas de Atuação</a></li>
-                    <li><a href="#sobre">O Escritório</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-                <a href="#contato" class="btn-cta">Agendar Consulta</a>
-            </nav>
-        </div>
+        <nav class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fas fa-gavel"></i></div>
+                <span>Dr. Silva</span>
+            </a>
+            <div class="nav-menu">
+                <a href="#inicio">Início</a>
+                <a href="#areas">Atuações</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <a href="#contato" class="btn-cta">Agendar Consulta</a>
+        </nav>
     </header>
 
     <section class="hero" id="inicio">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Excelência em <span>Direito</span> e Advocacia</h1>
-                    <p>Defendemos seus direitos com competência, ética e dedication. Mais de 20 anos de experiência为您服务.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#contato" class="btn-white">Agendar Consulta</a>
-                        <a href="#areas" class="btn-outline">Nossas Áreas</a>
-                    </div>
+                <h1>Defenda Seus <span>Direitos</span></h1>
+                <p>Atuação jurídica especializada com ética, transparência e compromiso. Sua causa em boas mãos.</p>
+                <div class="hero-buttons">
+                    <a href="#contato" class="btn-primary"><i class="fas fa-phone-alt"></i> Agendar Consulta</a>
+                    <a href="#areas" class="btn-secondary">Áreas de Atuação</a>
                 </div>
-                <div class="hero-card">
-                    <h3>Atendimento Personalizado</h3>
-                    <p>Cada caso é único e merece atenção dedicada. Nossa equipe oferece acompanhamento personalizado do
-                        início ao fim.</p>
-                    <p><strong>📍 São Paulo, SP</strong></p>
-                    <p><strong>📧 contato@silvaadvocacia.com.br</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="areas">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Áreas de Atuação</h2>
+                <p class="section-subtitle">Especialidades jurídicas para atender suas necessidades</p>
+            </div>
+            <div class="areas-grid">
+                <div class="area-item">
+                    <i class="fas fa-home"></i>
+                    <h4>Direito Civil</h4>
+                    <p>Contratos, indenizações, responsabilidade civil</p>
+                </div>
+                <div class="area-item">
+                    <i class="fas fa-briefcase"></i>
+                    <h4>Direito Trabalhista</h4>
+                    <p>Rescisão, assédio, direitos trabalhistas</p>
+                </div>
+                <div class="area-item">
+                    <i class="fas fa-car"></i>
+                    <h4>Direito Criminal</h4>
+                    <p>Defesa em processos criminais</p>
+                </div>
+                <div class="area-item">
+                    <i class="fas fa-family"></i>
+                    <h4>Direito Familiar</h4>
+                    <p>Divórcio, pensão, guarda, alimentos</p>
+                </div>
+                <div class="area-item">
+                    <i class="fas fa-landmark"></i>
+                    <h4>Direito Tributário</h4>
+                    <p>Planejamento tributário, execuções fiscais</p>
+                </div>
+                <div class="area-item">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Direito Empresarial</h4>
+                    <p>Consultoria, contratos, societário</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Serviços Oferecidos</h2>
+                <p class="section-subtitle">Atendimento personalizado para cada cliente</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-search"></i></div>
+                    <h3>Consultoria Jurídica</h3>
+                    <p>Análise detalhada do seu caso com orientação personalizada.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Elaboração de Contratos</h3>
+                    <p>Redação e revisão de contratos com total segurança jurídica.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3>Representação Processual</h3>
+                    <p>Defesa de seus interesses em qualquer instância judicial.</p>
                 </div>
             </div>
         </div>
@@ -621,187 +538,41 @@
 
     <section class="about" id="sobre">
         <div class="container">
-            <div class="about-content">
-                <div class="about-image"></div>
-                <div class="about-text">
-                    <h2>Sobre o Escritório</h2>
-                    <p>Fundado em 2004, o escritório Silva & Associates é referência em advocacia preventiva e
-                        contenciosa. Nossa missão é oferecer soluções jurídicas inovadoras e eficazes.</p>
-                    <p>Com uma equipe altamente qualificada, atendemos tanto pessoas físicas quanto jurídicas, sempre
-                        com foco na excelência e na ética profissional.</p>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Sobre <span>Dr. Silva</span></h2>
+                    <p>Advogado com mais de 15 anos de experiência no mercado jurídico. Formado pela USP, pós-graduado
+                        em Direito Penal e Civil,atendo com excelência e ética em todas as áreas do direito.</p>
                     <ul class="about-list">
-                        <li><span>✓</span> Categoria OAB/SP</li>
-                        <li><span>✓</span> +20 anos de experiência</li>
-                        <li><span>✓</span> +3.000 casos ganhos</li>
-                        <li><span>✓</span> Atendimento humanizado</li>
+                        <li><i class="fas fa-check-circle"></i> OAB/SP ativa</li>
+                        <li><i class="fas fa-check-circle"></i> Especializações reconocidas</li>
+                        <li><i class="fas fa-check-circle"></i> Atendimento humanizado</li>
+                        <li><i class="fas fa-check-circle"></i> Transparência total</li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="areas" id="areas">
-        <div class="container">
-            <div class="section-header">
-                <h2>Áreas de Atuação</h2>
-                <p>Especialidades jurídicas para atender suas necessidades</p>
-            </div>
-            <div class="areas-grid">
-                <div class="area-card">
-                    <div class="area-icon"><i class="fas fa-home"></i></div>
-                    <h3>Direito Civil</h3>
-                    <p>Contratos, responsabilidade civil, indenizações, direito do consumidor e questões patrimoniais.
-                    </p>
-                </div>
-                <div class="area-card">
-                    <div class="area-icon">💼</div>
-                    <h3>Direito Trabalhista</h3>
-                    <p>Defesa dos direitos de trabalhadores e empresas, rescisões, assédio e segurança do trabalho.</p>
-                </div>
-                <div class="area-card">
-                    <div class="area-icon">👨‍👩‍👧</div>
-                    <h3>Direito de Família</h3>
-                    <p>Divórcios, pensão alimentícia, guarda, regulamentação de visitas e inventários.</p>
-                </div>
-                <div class="area-card">
-                    <div class="area-icon"><i class="fas fa-building"></i></div>
-                    <h3>Direito Empresarial</h3>
-                    <p>Consultoria para empresas, contratos empresariais, fusões e aquisições.</p>
-                </div>
-                <div class="area-card">
-                    <div class="area-icon"><i class="fas fa-coins"></i></div>
-                    <h3>Direito Tributário</h3>
-                    <p>Planejamento tributário, recuperação de créditos e defesa em execuções fiscais.</p>
-                </div>
-                <div class="area-card">
-                    <div class="area-icon"><i class="fas fa-gavel"></i></div>
-                    <h3>Direito Penal</h3>
-                    <p>Defesa em processos penais, crimes empresariais e consultas jurídicas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="number">20+</div>
-                    <p>Anos de Experiência</p>
-                </div>
-                <div class="stat-item">
-                    <div class="number">3.000+</div>
-                    <p>Casos Julgados</p>
-                </div>
-                <div class="stat-item">
-                    <div class="number">500+</div>
-                    <p>Clientes Satisfeitos</p>
-                </div>
-                <div class="stat-item">
-                    <div class="number">98%</div>
-                    <p>Taxa de Sucesso</p>
-                </div>
+                <div class="about-image"></div>
             </div>
         </div>
     </section>
 
     <section class="contact" id="contato">
         <div class="container">
-            <div class="section-header">
-                <h2>Fale Conosco</h2>
-                <p>Estamos prontos para defender seus direitos</p>
-            </div>
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h3>Agende Sua Consulta</h3>
-                    <p>Tire suas dúvidas e conheça as melhores soluções para seu caso.</p>
-                    <div class="contact-item">
-                        <span>📍</span>
-                        <span>Av. Paulista, 1000 - São Paulo, SP</span>
-                    </div>
-                    <div class="contact-item">
-                        <span><i class="fas fa-phone"></i></span>
-                        <span>(11) 99999-9999</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>📧</span>
-                        <span>contato@silvaadvocacia.com.br</span>
-                    </div>
-                    <div class="contact-item">
-                        <span><i class="fas fa-clock"></i></span>
-                        <span>Seg - Sex: 9h - 18h</span>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label>Nome Completo</label>
-                        <input type="text" placeholder="Seu nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" placeholder="seu@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Telefone</label>
-                        <input type="tel" placeholder="(11) 99999-9999" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Área de Interesse</label>
-                        <select>
-                            <option>Selecione...</option>
-                            <option>Direito Civil</option>
-                            <option>Direito Trabalhista</option>
-                            <option>Direito de Família</option>
-                            <option>Direito Empresarial</option>
-                            <option>Direito Tributário</option>
-                            <option>Direito Penal</option>
-                            <option>Outro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Mensagem</label>
-                        <textarea rows="4" placeholder="Descreva brevemente seu caso..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Enviar Mensagem</button>
-                </form>
-            </div>
+            <h2>Precisa de Assistência Jurídica?</h2>
+            <p>Agende sua consulta e tire todas as suas dúvidas.</p>
+            <a href="https://wa.me/5511999999999" class="btn-primary" target="_blank"><i class="fab fa-whatsapp"></i>
+                Falar no WhatsApp</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <div class="logo-icon"><i class="fas fa-balance-scale"></i></div>
-                        Silva & Associates
-                    </a>
-                    <p>Advocacia de excelência desde 2004. Sua confiança, nossa responsabilidade.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Links Rápidos</h4>
-                    <ul>
-                        <li><a href="#inicio">Início</a></li>
-                        <li><a href="#areas">Áreas</a></li>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Áreas de Atuação</h4>
-                    <ul>
-                        <li><a href="#">Direito Civil</a></li>
-                        <li><a href="#">Direito Trabalhista</a></li>
-                        <li><a href="#">Direito de Família</a></li>
-                        <li><a href="#">Direito Empresarial</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Silva & Associates Advocacia. Todos os direitos reservados. OAB/SP 00.000</p>
+                <p>&copy; 2024 Dr. Silva Advocacia. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <script src="../js/language.js"></script>
 </body>
 
 </html>

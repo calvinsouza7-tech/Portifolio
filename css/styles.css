@@ -805,20 +805,21 @@ img {
 /* Triangular independent positioning */
 .floating-card:nth-child(1) {
     top: 20%;
-    left: 85%;
-    transform: translateX(-50%);
+    right: 0;
+    left: auto;
+    transform: none;
     animation-delay: 0s;
 }
 
 .floating-card:nth-child(2) {
-    top: 140px;
-    left: 20px;
+    top: 50%;
+    left: 0;
     animation-delay: -2s;
 }
 
 .floating-card:nth-child(3) {
-    top: 140px;
-    right: 20px;
+    top: 50%;
+    right: 0;
     animation-delay: -4s;
 }
 
