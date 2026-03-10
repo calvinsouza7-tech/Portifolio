@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebDesign Pro - Agência de Criação de Sites</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        :root {
+            --primary: #00D4AA;
+            --primary-dark: #00B894;
+            --secondary: #0F0F1A;
+            --accent: #6C5CE7;
+            --white: #FFFFFF;
+            --gray: #1A1A2E;
+            --gradient: linear-gradient(135deg, #00D4AA 0%, #00B894 50%, #6C5CE7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--secondary);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 170, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(108, 92, 231, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(0, 212, 170, 0.05) 0%, transparent 50%);
+            animation: bgPulse 15s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(2%, 2%) rotate(1deg);
+            }
+
+            66% {
+                transform: translate(-1%, 1%) rotate(-1deg);
+            }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+                opacity: 0.6;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            background: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 212, 170, 0.1);
+            transition: all 0.3s;
+        }
+
+        .header.scrolled {
+            padding: 10px 0;
+            background: rgba(15, 15, 26, 0.95);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            animation: logoGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(0, 212, 170, 0.6);
+            }
+        }
+
+        .logo-text span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--white);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 170, 0.4);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            max-width: 550px;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 16px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 170, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 14px 33px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Stats */
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            margin-top: 60px;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Floating Elements */
+        .hero-visual {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 450px;
+            height: 450px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        .floating-card:nth-child(1) {
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-card:nth-child(2) {
+            top: 50%;
+            right: -10%;
+            animation-delay: -2s;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: 10%;
+            right: 20%;
+            animation-delay: -4s;
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .floating-card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .floating-card h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .floating-card p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(108, 92, 231, 0.1);
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        /* Plans Grid */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .plan-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 40px 30px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 212, 170, 0.3);
+        }
+
+        .plan-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .plan-card.featured {
+            background: rgba(0, 212, 170, 0.1);
+            border-color: rgba(0, 212, 170, 0.3);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .plan-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .plan-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .plan-description {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .plan-features li i {
+            color: var(--primary);
+        }
+
+        .plan-btn {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .plan-btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .plan-btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(0, 212, 170, 0.5);
+            color: var(--primary);
+        }
+
+        .plan-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 120px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 212, 170, 0.2);
+        }
+
+        .benefit-icon {
+            width: 65px;
+            height: 65px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Differential Section */
+        .differential {
+            padding: 120px 0;
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .diff-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.75rem;
+            margin-bottom: 25px;
+        }
+
+        .diff-content h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .diff-content>p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+        }
+
+        .diff-list {
+            list-style: none;
+        }
+
+        .diff-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .diff-list-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .diff-list-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+
+        .diff-list-text p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .diff-image {
+            background:
+                linear-gradient(135deg, rgba(0, 212, 170, 0.2) 0%, rgba(108, 92, 231, 0.2) 100%),
+                url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diff-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(0, 212, 170, 0.3);
+            border-radius: 30px;
+            margin: 15px;
+        }
+
+        /* Templates Section */
+        .templates {
+            padding: 120px 0;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .template-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .template-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 170, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .template-preview {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-preview::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.9;
+        }
+
+        .template-preview.eletricista::before {
+            background: linear-gradient(135deg, #FFB800 0%, #FF8C00 100%);
+        }
+
+        .template-preview.solar::before {
+            background: linear-gradient(135deg, #00AEEF 0%, #00D4AA 100%);
+        }
+
+        .template-preview.lawyer::before {
+            background: linear-gradient(135deg, #1A365D 0%, #2C5282 100%);
+        }
+
+        .template-preview.yoga::before {
+            background: linear-gradient(135deg, #38A169 0%, #68D391 100%);
+        }
+
+        .template-preview.trainer::before {
+            background: linear-gradient(135deg, #E53E3E 0%, #FC8181 100%);
+        }
+
+        .template-preview.dentist::before {
+            background: linear-gradient(135deg, #4299E1 0%, #90CDF4 100%);
+        }
+
+        .template-icon {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .template-info {
+            padding: 25px;
+        }
+
+        .template-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .template-info p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .template-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.3s;
+        }
+
+        .template-link:hover {
+            gap: 15px;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.75rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer h4 {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Language Selector - Footer */
+        .lang-selector-footer {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .lang-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 40px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 10px 50px rgba(37, 211, 102, 0.6);
+            }
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background: white;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-visual {
+                display: none;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .diff-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .lang-selector-footer {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                    <span class="logo-text">WebDesign</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#templates">Templates</a></li>
+                    <li><a href="#differential">Diferenciais</a></li>
+                </ul>
+                <a href="#contato" class="nav-cta">Falar com Especialista</a>
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-rocket"></i>
+                    <span>Transformamos sua presença digital</span>
+                </div>
+                <h1>Crie um Site <span>Incrível</span> para seu Negócio</h1>
+                <p>Agência especializada em criação de sites profissionais. Templates únicos, modernos e otimizados para
+                    converter visitantes em clientes.</p>
+                <div class="hero-buttons">
+                    <a href="#servicos" class="btn-primary">Ver Planos</a>
+                    <a href="#templates" class="btn-secondary">Ver Templates</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Projetos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfação</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Templates</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-card">
+                <div class="floating-card-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h4>100% Responsivo</h4>
+                <p>Funciona em todos dispositivos</p>
+            </div>
+            <div class="floating-card">
+                <div class="floating-card-icon"><i class="fas fa-rocket"></i></div>
+                <h4>Alta Performance</h4>
+                <p>Carregamento rápido</p>
+            </div>
+            <div class="floating-card">
+                <div class="floating-card-icon"><i class="fas fa-search"></i></div>
+                <h4>SEO Otimizado</h4>
+                <p>Melhor rankeamento Google</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Benefícios</div>
+                <h2 class="section-title">Tudo Incluído no Seu Site</h2>
+                <p class="section-subtitle">Tecnologias modernas para um site de alta performance</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-server"></i></div>
+                    <h4>Hospedagem Grátis</h4>
+                    <p>Servidor rápido e seguro Incluso nos planos</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-globe"></i></div>
+                    <h4>Domínio Grátis</h4>
+                    <p>Seu domínio .com.br ou .com</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h4>Responsivo</h4>
+                    <p>Perfeito em celular, tablet e desktop</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+                    <h4>Alta Performance</h4>
+                    <p>Carregamento ultrarrápido</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>SSL Grátis</h4>
+                    <p>Segurança HTTPS automatically</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>SEO Otimizado</h4>
+                    <p>Melhor posicionamento no Google</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-envelope"></i></div>
+                    <h4>E-mail Profissional</h4>
+                    <p>seu@empresa.com.br</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-headset"></i></div>
+                    <h4>Suporte Dedicado</h4>
+                    <p>Assistência sempre que precisar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differential Section -->
+    <section class="differential" id="differential">
+        <div class="container">
+            <div class="diff-grid">
+                <div class="diff-content">
+                    <div class="section-tag">Diferenciais</div>
+                    <h2>Por Que Escolher a <span>WebDesign Pro</span>?</h2>
+                    <p>Nós não criamos apenas sites, criamos soluções digitais completas que ajudam seu negócio a
+                        crescer.</p>
+                    <ul class="diff-list">
+                        <li>
+                            <div class="diff-list-icon"><i class="fas fa-gift"></i></div>
+                            <div class="diff-list-text">
+                                <h4>Hospedagem e Domínio Grátis</h4>
+                                <p>Não se preocupe com custos extras</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="diff-list-icon"><i class="fas fa-magic"></i></div>
+                            <div class="diff-list-text">
+                                <h4>Design Exclusivo</h4>
+                                <p>Criamos especialmente para sua marca</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="diff-list-icon"><i class="fas fa-chart-pie"></i></div>
+                            <div class="diff-list-text">
+                                <h4>Analytics Integrado</h4>
+                                <p>Acompanhe resultados em tempo real</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="diff-list-icon"><i class="fas fa-rocket"></i></div>
+                            <div class="diff-list-text">
+                                <h4>Entrega Rápida</h4>
+                                <p>Seu site pronto em até 7 dias</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="diff-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="templates" id="templates">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Templates</div>
+                <h2 class="section-title">Nossos Templates</h2>
+                <p class="section-subtitle">Designs profissionais para diversos segmentos</p>
+            </div>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <div class="template-preview">
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&h=250&fit=crop"
+                            alt="Eletricista">
+                    </div>
+                    <div class="template-info">
+                        <h3>Eletricista</h3>
+                        <p>Site profissional para eletricistas</p>
+                        <a href="templates/eletricista.html" class="template-link">Ver Demo <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="template-card">
+                    <div class="template-preview">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=250&fit=crop"
+                            alt="Painéis Solares">
+                    </div>
+                    <div class="template-info">
+                        <h3>Painéis Solares</h3>
+                        <p>Energia solar para empresas</p>
+                        <a href="templates/solar.html" class="template-link">Ver Demo <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="template-card">
+                    <div class="template-preview">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=250&fit=crop"
+                            alt="Advogado">
+                    </div>
+                    <div class="template-info">
+                        <h3>Advogado</h3>
+                        <p>Escritório de advocacia</p>
+                        <a href="templates/advogado.html" class="template-link">Ver Demo <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="template-card">
+                    <div class="template-preview">
+                        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=400&h=250&fit=crop"
+                            alt="Yoga">
+                    </div>
+                    <div class="template-info">
+                        <h3>Professor de Yoga</h3>
+                        <p>Aulas e meditação</p>
+                        <a href="templates/yoga.html" class="template-link">Ver Demo <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="template-card">
+                    <div class="template-preview">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=250&fit=crop"
+                            alt="Personal Trainer">
+                    </div>
+                    <div class="template-info">
+                        <h3>Personal Trainer</h3>
+                        <p>Treinos personalizados</p>
+                        <a href="templates/trainer.html" class="template-link">Ver Demo <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="template-card">
+                    <div class="template-preview">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=250&fit=crop"
+                            alt="Dentista">
+                    </div>
+                    <div class="template-info">
+                        <h3>Dentista</h3>
+                        <p>Clínica odontológica</p>
+                        <a href="templates/dentista.html" class="template-link">Ver Demo <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contato">
+        <div class="container">
+            <div class="cta-content">
+                <div class="section-tag">Vamos Criar</div>
+                <h2>Pronto para Transformar sua Presença Digital?</h2>
+                <p>Fale com nossos especialistas e descubra a melhor solução para seu negócio.</p>
+                <a href="#" class="btn-primary"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section (Moved before CTA) -->
+    <section class="services" id="planos">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Nossos Planos</div>
+                <h2 class="section-title">Escolha o Plano Ideal</h2>
+                <p class="section-subtitle">Planos flexíveis para atender todas as necessidades do seu negócio</p>
+            </div>
+            <div class="plans-grid">
+                <!-- Plan 1 -->
+                <div class="plan-card">
+                    <div class="plan-icon"><i class="fas fa-file-code"></i></div>
+                    <h3>Projeto Único</h3>
+                    <div class="plan-price">R$ 997<span>/projeto</span></div>
+                    <p class="plan-description">Ideal para quem precisa de um site personalizado com até 2 alterações
+                        inclusas.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Site personalizado</li>
+                        <li><i class="fas fa-check"></i> até 5 páginas</li>
+                        <li><i class="fas fa-check"></i> Design único</li>
+                        <li><i class="fas fa-check"></i> 2 alterações inclusas</li>
+                        <li><i class="fas fa-check"></i> Formulário de contato</li>
+                        <li><i class="fas fa-check"></i> SSL Grátis</li>
+                    </ul>
+                    <a href="#contato" class="plan-btn plan-btn-secondary">Escolher Plano</a>
+                </div>
+
+                <!-- Plan 2 - Featured -->
+                <div class="plan-card featured">
+                    <div class="plan-badge">Mais Popular</div>
+                    <div class="plan-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Manutenção Mensal</h3>
+                    <div class="plan-price">R$ 197<span>/mês</span></div>
+                    <p class="plan-description">Perfeito para quem quer um site sempre atualizado com alterações
+                        mensais.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Site completo</li>
+                        <li><i class="fas fa-check"></i> até 8 páginas</li>
+                        <li><i class="fas fa-check"></i> 1 alteração/mês</li>
+                        <li><i class="fas fa-check"></i> Hospedagem inclusa</li>
+                        <li><i class="fas fa-check"></i> Domínio Grátis</li>
+                        <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                    </ul>
+                    <a href="#contato" class="plan-btn plan-btn-primary">Escolher Plano</a>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="plan-card">
+                    <div class="plan-icon"><i class="fas fa-crown"></i></div>
+                    <h3>Plano Anual</h3>
+                    <div class="plan-price">R$ 1.997<span>/ano</span></div>
+                    <p class="plan-description">Economize 15% com o plano anual. Inclui 12 alterações anuais (1 por
+                        mês).</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Site completo</li>
+                        <li><i class="fas fa-check"></i> até 12 páginas</li>
+                        <li><i class="fas fa-check"></i> 1 alteração/mês</li>
+                        <li><i class="fas fa-check"></i> Hospedagem inclusa</li>
+                        <li><i class="fas fa-check"></i> Domínio Grátis</li>
+                        <li><i class="fas fa-check"></i> E-mail profissional</li>
+                    </ul>
+                    <a href="#contato" class="plan-btn plan-btn-secondary">Escolher Plano</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                        <span class="logo-text">WebDesign</span>
+                    </a>
+                    <p>Criando presença digital para negócios de sucesso. Transformamos sua visão em realidade.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="lang-selector-footer">
+                        <button class="lang-btn active" title="Português (Brasil)">🇧🇷</button>
+                        <button class="lang-btn" title="English (US)">🇺🇸</button>
+                        <button class="lang-btn" title="Español (España)">🇪🇸</button>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#templates">Templates</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Criação de Sites</a></li>
+                        <li><a href="#">Loja Virtual</a></li>
+                        <li><a href="#">SEO</a></li>
+                        <li><a href="#">Manutenção</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-phone"></i> (11) 99999-9999</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> contato@webdesignpro.com.br</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> São Paulo, SP</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WebDesign Pro. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <div class="whatsapp-tooltip">Fale com nossa IA!</div>
+    </a>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Language selector
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
