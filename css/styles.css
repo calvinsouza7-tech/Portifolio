@@ -455,37 +455,38 @@ img {
 }
 
 .shape:nth-child(1) {
-    width: 350px;
-    height: 350px;
+    width: 200px;
+    height: 200px;
     top: 8%;
     left: 3%;
     border-color: rgba(0, 212, 170, 0.2);
+    animation-delay: -2s;
 }
 
 .shape:nth-child(2) {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     top: 55%;
     right: 8%;
     border-color: rgba(108, 92, 231, 0.2);
-    animation-delay: -5s;
+    animation-delay: -4s;
 }
 
 .shape:nth-child(3) {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     bottom: 15%;
     left: 18%;
-    animation-delay: -10s;
+    animation-delay: -6s;
 }
 
 .shape:nth-child(4) {
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     top: 30%;
     right: 20%;
     border-color: rgba(0, 212, 170, 0.15);
-    animation-delay: -15s;
+    animation-delay: -8s;
 }
 
 /* ============================================
