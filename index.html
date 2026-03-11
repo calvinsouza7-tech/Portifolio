@@ -398,20 +398,20 @@
         }
 
         .floating-card:nth-child(1) {
-            top: 10%;
-            right: 10%;
+            top: 5%;
+            right: 5%;
             animation-delay: 0s;
         }
 
         .floating-card:nth-child(2) {
-            top: 50%;
-            right: -10%;
+            top: 35%;
+            right: -5%;
             animation-delay: -2s;
         }
 
         .floating-card:nth-child(3) {
-            bottom: 10%;
-            right: 20%;
+            bottom: 5%;
+            right: 15%;
             animation-delay: -4s;
         }
 
@@ -1153,7 +1153,6 @@
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#templates">Templates</a></li>
-                    <li><a href="#differential">Diferenciais</a></li>
                 </ul>
                 <a href="#contato" class="nav-cta">Falar com Especialista</a>
                 <button class="mobile-menu-btn">
@@ -1197,17 +1196,17 @@
             </div>
         </div>
         <div class="hero-visual">
-            <div class="floating-card">
+            <div class="floating-card" id="card-top">
                 <div class="floating-card-icon"><i class="fas fa-mobile-alt"></i></div>
                 <h4>100% Responsivo</h4>
                 <p>Funciona em todos dispositivos</p>
             </div>
-            <div class="floating-card">
+            <div class="floating-card" id="card-middle">
                 <div class="floating-card-icon"><i class="fas fa-rocket"></i></div>
                 <h4>Alta Performance</h4>
                 <p>Carregamento rápido</p>
             </div>
-            <div class="floating-card">
+            <div class="floating-card" id="card-bottom">
                 <div class="floating-card-icon"><i class="fas fa-search"></i></div>
                 <h4>SEO Otimizado</h4>
                 <p>Melhor rankeamento Google</p>
@@ -1273,7 +1272,6 @@
         <div class="container">
             <div class="diff-grid">
                 <div class="diff-content">
-                    <div class="section-tag">Diferenciais</div>
                     <h2>Por Que Escolher a <span>WebDesign Pro</span>?</h2>
                     <p>Nós não criamos apenas sites, criamos soluções digitais completas que ajudam seu negócio a
                         crescer.</p>
@@ -1398,18 +1396,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="contato">
-        <div class="container">
-            <div class="cta-content">
-                <div class="section-tag">Vamos Criar</div>
-                <h2>Pronto para Transformar sua Presença Digital?</h2>
-                <p>Fale com nossos especialistas e descubra a melhor solução para seu negócio.</p>
-                <a href="#" class="btn-primary"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Plans Section (Moved before CTA) -->
     <section class="services" id="planos">
         <div class="container">
@@ -1477,6 +1463,18 @@
         </div>
     </section>
 
+    <!-- CTA Section -->
+    <section class="cta" id="contato">
+        <div class="container">
+            <div class="cta-content">
+                <div class="section-tag">Vamos Criar</div>
+                <h2>Pronto para Transformar sua Presença Digital?</h2>
+                <p>Fale com nossos especialistas e descubra a melhor solução para seu negócio.</p>
+                <a href="#" class="btn-primary"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -1535,7 +1533,6 @@
     <!-- WhatsApp Button -->
     <a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
-        <div class="whatsapp-tooltip">Fale com nossa IA!</div>
     </a>
 
     <script src="js/main.js"></script>
