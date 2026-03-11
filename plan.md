@@ -1,237 +1,92 @@
-# Projeto: Site de Portfólio para Agência de Web Design
+# Plano de Refatoração dos Cards Flutuantes
 
-## 1. Visão Geral do Projeto
+## Etapa 1: Extração do Conteúdo Atual
 
-**Nome do Projeto:** Portfólio Agency Website  
-**Tipo:** Site de portfólio multi-template com internacionalização  
-**Objetivo:** Criar um site de portfólio profissional para uma agência de web design que apresente templates de landing pages e sites para diversos profissionais (eletricistas, painéis solares, advogados, professor de yoga, personal trainer, etc.)  
-**Idioma Principal:** Português do Brasil (PT-BR)  
-**Idiomas Adicionais:** Inglês (EN), Espanhol (ES) - com detecção automática por país
+### Cards Existentes
 
----
+**Card Top (#card-top):**
+- Ícone: `fas fa-rocket`
+- Título: "Lançamento Rápido"
+- Descrição: "Sites entregues em tempo recorde"
 
-## 2. Estrutura do Site
+**Card Middle (#card-middle):**
+- Ícone: `fas fa-mobile-alt`
+- Título: "Design Responsivo"
+- Descrição: "Perfeito em qualquer dispositivo"
 
-### 2.1 Páginas Principais
-
-| Página | Descrição |
-|--------|-----------|
-| **Home** | Apresentação da agência, serviços, diferenciais e chamada para ação |
-| **Templates** | Galeria de todos os templates disponíveis com preview |
-| **Template Individual** | Página de detalhes de cada template (várias) |
-| **Sobre** | História da agência, equipe, valores |
-| **Contato** | Formulário de contato e informações |
-
-### 2.2 Templates de Sites a Criar
-
-**Todos os templates são Frontend-only (sem backend)**
-
-Cada template terá design único baseado na profissão:
-
-| # | Template | Cor Principal | Estilo |
-|---|----------|----------------|--------|
-| 1 | **Eletricista** | #FFB800 (Amarelo eletricista) | Vibrante, moderno |
-| 2 | **Painéis Solares** | #00AEEF (Azul céu) | Limpo, sustentável |
-| 3 | **Advogado** | #1A365D (Azul marinho) | Sério, profissional |
-| 4 | **Professor de Yoga** | #38A169 (Verde natureza) | Calmo, orgânico |
-| 5 | **Personal Trainer** | #E53E3E (Vermelho energia) | Dinâmico, intenso |
-| 6 | **Dentista** | #4299E1 (Azul干净) | Higiênico, confiável |
-| 7 | **Veterinário** | #805AD5 (Roxo) | Amigável, cuidador |
-| 8 | **Restaurante** | #DD6B20 (Laranja apetitoso) | Aconchegante, culinary |
-| 9 | **Salão de Beleza** | #D69BC8 (Rosa elegante) | Elegante, sofisticado |
-| 10 | **Arquiteto** | #2D3748 (Cinza escuro) | Moderno, arquitetural |
-| 11 | **Fotógrafo** | #1A1A2E (Preto fosco) | Elegante, minimalista |
-| 12 | **Contador** | #2B6CB0 (Azul conservador) | Confiável, formal |
-| 13 | **Autoescola** | #ED8936 (Laranja) | Divertido, learning |
-| 14 | **Clínica Médica** | #38B2AC (Teal médico) | Sério, clean |
-| 15 | **Agência de Viagens** | #00B5D8 (Turquesa) | Aventura,-exótico |
+**Card Bottom (#card-bottom):**
+- Ícone: `fas fa-bullseye`
+- Título: "Foco em Resultados"
+- Descrição: "Estratégias para aumentar suas vendas"
 
 ---
 
-## 3. Especificações Técnicas
+## Etapa 2: Estrutura HTML Atual
 
-### 3.1 Arquitetura
-
-```
-/index.html              # Página principal
-/css/
-  /styles.css           # Estilos principais
-  /templates.css        # Estilos específicos dos templates
-  /responsive.css       # Estilos responsivos
-/js/
-  /main.js              # Scripts principais
-  /language.js          # Sistema de internacionalização
-  /templates.js         # Dados dos templates
-/assets/
-  /images/              # Imagens do projeto
-  /icons/               # Ícones
-/templates/             # Páginas de demonstração dos templates
+```html
+<div class="hero-visual">
+    <div class="floating-card" id="card-top">
+        <div class="floating-card-icon"><i class="fas fa-rocket"></i></div>
+        <h4>Lançamento Rápido</h4>
+        <p>Sites entregues em tempo recorde</p>
+    </div>
+    <div class="floating-card" id="card-middle">
+        <div class="floating-card-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h4>Design Responsivo</h4>
+        <p>Perfeito em qualquer dispositivo</p>
+    </div>
+    <div class="floating-card" id="card-bottom">
+        <div class="floating-card-icon"><i class="fas fa-bullseye"></i></div>
+        <h4>Foco em Resultados</h4>
+        <p>Estratégias para aumentar suas vendas</p>
+    </div>
+</div>
 ```
 
-### 3.2 Sistema de Internacionalização
-
-- **Detecção de País:** Usar API ipapi.co ou similar para detectar país
-- **Idiomas:**
-  - 🇧🇷 Português (Brasil) - Padrão
-  - 🇺🇸 Inglês (EUA, Reino Unido, Canadá)
-  - 🇪🇸 Espanhol (Espanha, México, Argentina, Colombia)
-- **Fallback:** Se país não reconhecido, usar PT-BR
-- **Switcher Manual:** Usuário pode trocar idioma manualmente
-
-### 3.3 Design System
-
-**Site Principal (Portfólio da Agência):**
-
-**Tema:** Minimalista, Clean White/Light Gray
-
-**Cores:**
-- Primária: #FFFFFF (Branco)
-- Secundária: #F5F5F5 (Cinza claro)
-- Acento: #28A745 (Verde)
-- Texto Principal: #333333 (Cinza escuro)
-- Texto Secundário: #666666 (Cinza médio)
-- Bordas: #E0E0E0 (Cinza suave)
-
-**Tipografia:**
-- Família Principal: Open Sans, Lato (Sans-serif)
-- Títulos: Negrito, hierarquia clara
-- Textos: Regular, boa legibilidade
-
-**Layout:**
-- Grid responsivo
-- Componentes reutilizáveis
-- Animações sutis
-- Muito espaço em branco
-
-**Nota:** Cada template de cliente terá seu próprio design único baseado na profissão (conforme tabela na seção 2.2)
+**Posicionamento Atual (lines 359-375 do index.html):**
+- Card Top: top: 5%, right: 5%
+- Card Middle: top: 35%, right: -5%
+- Card Bottom: bottom: 5%, right: 15%
 
 ---
 
-## 4. Fluxo de Navegação
+## Etapa 3: Novo Posicionamento Estratégico
 
-```mermaid
-graph TD
-    A[Home] --> B[Templates]
-    A --> C[Sobre]
-    A --> D[Contato]
-    B --> E[Template Eletricista]
-    B --> F[Template Solar]
-    B --> G[Template Advogado]
-    B --> H[Template Yoga]
-    B --> I[Template Personal Trainer]
-    E --> J[Ver Demo]
-    F --> J
-    G --> J
-    H --> J
-    I --> J
-```
+### Princípios de Posicionamento
+
+1. **Fluxo Natural do Conteúdo:** Alinhar com a hierarquia visual da home
+2. **Áreas de Destaque:** Posicionar em pontos estratégicos de atenção
+3. **Equilíbrio Visual:** Distribuir os cards de forma harmônica
+4. **Responsividade Garantida:** Adaptar para todos os dispositivos
+
+### Novo Layout Proposto
+
+| Card | Desktop | Tablet | Mobile |
+|------|---------|--------|--------|
+| Card 1 | Superior esquerda | Relative top | Em coluna |
+| Card 2 | Centro direita | Relative | Em coluna |
+| Card 3 | Inferior esquerda | Relative | Em coluna |
 
 ---
 
-## 5. Funcionalidades Principais
+## Etapa 4: Checklist de Implementação
 
-### 5.1 Home Page
-- Hero section com tagline e CTA
-- Apresentação dos serviços
-- Showcase de templates em destaque
-- Depoimentos de clientes
-- Blog/Últimos projetos
-- Footer com informações de contato
+### Fase 1: Remoção
+- [ ] Remover CSS atual dos floating cards (lines 341-435)
+- [ ] Remover HTML dos cards no .hero-visual
+- [ ] Limpar referências residuais
 
-### 5.2 Galeria de Templates
-- Grid de templates com thumbnails
-- Filtro por categoria
-- Preview ao hover
-- Botão para ver demonstração
+### Fase 2: Recriação
+- [ ] Criar nova estrutura HTML
+- [ ] Implementar posicionamento estratégico
+- [ ] Adicionar IDs únicos
 
-### 5.3 Página de Template
-- Preview completo do design
-- Lista de funcionalidades incluídas
-- Botão de contato para orçamento
+### Fase 3: Responsividade
+- [ ] Media query para 768px
+- [ ] Media query para 480px
+- [ ] Transições suaves entre breakpoints
 
-### 5.4 Sistema de Idiomas
-- Detecção automática por IP
-- Selector de idioma manual
-- Todas as páginas traduzidas
-- URL com parâmetro de idioma (?lang=pt/en/es)
-
----
-
-## 6. Diferenciais vs Hinger.digital
-
-1. **Design Próprio:** Não copiar layout, criar identidade visual única
-2. **Mais Templates:** Apresentar maior variedade inicial
-3. **Interatividade:** Adicionar transições e animações mais sofisticadas
-4. **Performance:** Otimizar para carregamento rápido
-5. **Código Limpo:** Sem dependencies excessivas, código próprio
-6. **Modernidade:** Usar técnicas mais atuais (CSS Grid, Flexbox, Custom Properties)
-
----
-
-## 7. Stack Tecnológico
-
-- **HTML5** - Semântica e estrutura
-- **CSS3** - Estilos com variáveis, Flexbox, Grid
-- **JavaScript Vanilla** - Funcionalidades (sem frameworks pesados)
-- **APIs:**
-  - Detecção de país por IP
-  - Formulário de contato (simples)
-
-**Nota:** Todos os templates são Frontend-only. O template de Restaurante inclui carrinho de compras que envia o pedido por WhatsApp/mensagem (sem necessidade de backend).
-
-**Cada template terá um design ÚNICO e diferente** - demonstrando a versatilidade da agência.
-
----
-
-## 8. Checklist de Implementação
-
-### Fase 1: Estrutura Base
-- [ ] Criar estrutura de pastas
-- [ ] Configurar HTML base
-- [ ] Criar CSS base com variáveis
-- [ ] Configurar JavaScript principal
-
-### Fase 2: Sistema de Internacionalização
-- [ ] Criar sistema de detecção de país
-- [ ] Implementar switcher de idiomas
-- [ ] Traduzir todas as páginas
-
-### Fase 3: Páginas Principais
-- [ ] Desenvolver Home Page
-- [ ] Desenvolver Página de Templates
-- [ ] Desenvolver Página Sobre
-- [ ] Desenvolver Página de Contato
-
-### Fase 4: Templates
-- [ ] Template Eletricista
-- [ ] Template Painéis Solares
-- [ ] Template Advogado
-- [ ] Template Professor de Yoga
-- [ ] Template Personal Trainer
-- [ ] Template Dentista
-- [ ] Template Veterinário
-- [ ] Template Restaurante
-- [ ] Template Salão de Beleza
-- [ ] Template Arquiteto
-- [ ] Template Fotógrafo
-- [ ] Template Contador
-- [ ] Template Autoescola
-- [ ] Template Clínica Médica
-- [ ] Template Agência de Viagens
-
-### Fase 5: Refinamentos
-- [ ] Responsividade total
-- [ ] Animações e transições
-- [ ] Otimização de performance
-- [ ] Testes em diferentes navegadores
-
----
-
-## 9. Próximos Passos
-
-Após aprovação deste plano, iniciar implementação seguindo o checklist acima.
-
----
-
-*Plano criado em: 2026-03-10*  
-*Versão: 1.0*
+### Fase 4: Validação
+- [ ] Testar sobreposição de conteúdo
+- [ ] Validar em diferentes dispositivos
+- [ ] Verificar performance das animações
