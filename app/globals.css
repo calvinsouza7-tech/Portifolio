@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Color Variables */
+:root {
+  --primary: #00D4AA;
+  --primary-dark: #00B894;
+  --secondary: #0F0F1A;
+  --accent: #6C5CE7;
+  --white: #FFFFFF;
+  --gray: #1A1A2E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--secondary);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Gradient */
+.gradient-text {
+  background: linear-gradient(135deg, #00D4AA 0%, #00B894 50%, #6C5CE7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-btn {
+  background: linear-gradient(135deg, #00D4AA 0%, #00B894 50%, #6C5CE7 100%);
+}
